@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>PESCA DEPORTIVA</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+body {
+    background-color: #2c3e50; /* Fondo de color azul oscuro */
+    color: #ecf0f1; /* Color de texto claro */
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.title-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.title-section h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ecf0f1; /* Color de texto claro */
+}
+
+.title-section p {
+    font-size: 1.2em;
+    color: #bdc3c7; /* Color de texto gris claro */
+}
+
+.card {
+    height: 100%;
+    background-color: #34495e; /* Fondo de la tarjeta azul grisáceo */
+    color: #ecf0f1; /* Color de texto claro */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #bdc3c7; /* Color de texto gris claro */
+}
+
+.btn-danger {
+    background-color: #e74c3c; /* Color rojo para el botón de regresar */
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b; /* Color rojo más oscuro en hover */
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-start mb-3">
+            <a th:href="@{/}" class="btn btn-danger btn-lg">Regresar</a>
+        </div>
+        <div class="title-section">
+            <h1>PESCA DEPORTIVA</h1>
+            <p>Bienvenido, escoja una opción</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/index'">
+                    <figure>
+                        <img src="/images/AfiliadosPesca.jpg" alt="Afiliados">
+                    </figure>
+                    <h2 class="card-title">Afiliados</h2>
+                    <p>Información de los afiliados</p>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/cauces'">
+                    <figure>
+                        <img src="/images/cauces.jpg" alt="Cauces">
+                    </figure>
+                    <h2 class="card-title">Cauces</h2>
+                    <p>Información de los cauces</p>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/peces'">
+                    <figure>
+                        <img src="/images/peces.jpg" alt="Peces">
+                    </figure>
+                    <h2 class="card-title">Peces</h2>
+                    <p>Información de los peces</p>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/eventos'">
+                    <figure>
+                        <img src="/images/eventosPesca.jpg" alt="Cauces por pez">
+                    </figure>
+                    <h2 class="card-title">Eventos</h2>
+                    <p>Información de los eventos</p>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/lugares'">
+                    <figure>
+                        <img src="/images/lugares.jpg" alt="Cauces por pez">
+                    </figure>
+                    <h2 class="card-title">Lugares</h2>
+                    <p>Información de los lugares</p>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/buscarTopAfiliadosEventos'">
+                    <figure>
+                        <img src="/images/top3.jpg" alt="Top 3">
+                    </figure>
+                    <h2 class="card-title">Buscar top 3</h2>
+                    <p>Se muestra el top 3 de afiliados por evento</p>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/buscarViewLicencia'">
+                    <figure>
+                        <img src="/images/vistalicencias.jpg" alt="Licencias">
+                    </figure>
+                    <h2 class="card-title">Permiso por apellido</h2>
+                    <p>Buscar la ficha y licencia</p>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/vistaAfiliadosEventos1995'">
+                    <figure>
+                        <img src="/images/afiliados1995.jpg" alt="Afiliados 1995">
+                    </figure>
+                    <h2 class="card-title">Afiliados 1995</h2>
+                    <p>Lista de los afiliados que participaron en 1995</p>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/buscarLugaresPorPez'">
+                    <figure>
+                        <img src="/images/lugaresPorPez.jpg" alt="Cauces por pez">
+                    </figure>
+                    <h2 class="card-title">Cauces por pez</h2>
+                    <p>Información de cauces en base a un pez</p>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" onclick="window.location.href='/buscarVistaParticipaciones'">
+                    <figure>
+                        <img src="/images/v_min_posicion.jpg" alt="Mejor posición">
+                    </figure>
+                    <h2 class="card-title">Mejor posición</h2>
+                    <p>La mejor posición de un afiliado en un evento</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

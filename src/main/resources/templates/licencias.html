@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Licencias</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href=#>Control de afiliados</a>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/index}">Control
+						Afiliados </a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/index/crear}">Crear afiliado</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/peces}">Peces</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/licencias}">Licencias</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarVistaParticipaciones}">VistaMinPosicionParticipaciones</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<h1>Lista Licencias</h1>
+		</div>
+		<table class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>Licencia</th>
+					<th>Crear</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="licencia : ${listalicencias}">
+					<td th:text="${licencia.nLicencia}">Nombre Licencia</td>
+					<td><a th:href="@{licencias/crearLicencia}">Crear</a></td>
+					<td><a th:href="@{/licencias/{nLicencia}(nLicencia=${licencia.nLicencia})}"
+						class="btn-btn-danger">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>

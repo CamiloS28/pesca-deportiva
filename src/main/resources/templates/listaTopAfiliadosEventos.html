@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Lugares por Pez</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css">
+<style>
+body {
+    background-color: #2c3e50; /* Fondo de color azul oscuro */
+    color: #ecf0f1; /* Color de texto claro */
+}
+
+.navbar {
+    margin-bottom: 30px;
+    background-color: #1b2a38; /* Color de fondo del navbar */
+    border-bottom: 3px solid #27ae60; /* Línea inferior verde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para hacerla más llamativa */
+}
+
+.navbar-brand, .nav-link {
+    color: #ecf0f1 !important;
+    font-size: 1.2em; /* Aumenta el tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #27ae60 !important; /* Color verde en hover */
+}
+
+.navbar-brand {
+    font-size: 1.5em; /* Aumenta el tamaño del texto del brand */
+    color: #27ae60 !important; /* Color verde para el brand */
+}
+
+.navbar-nav {
+    margin: 0; /* Alineando el contenido de la navbar a la izquierda */
+}
+
+.container {
+    margin-top: 50px;
+}
+
+h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ecf0f1; /* Color de texto claro */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    color: #ecf0f1; /* Color de texto claro */
+}
+
+.form-control {
+    background-color: #34495e; /* Fondo de la caja de texto */
+    color: #ecf0f1; /* Color de texto claro */
+    border: none;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    background-color: #3d566e; /* Fondo de la caja de texto al enfocar */
+    color: #ecf0f1; /* Color de texto claro */
+}
+
+.btn-primary {
+    background-color: #2980b9; /* Color azul claro para el botón */
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.btn-primary:hover {
+    background-color: #1f618d; /* Color azul más oscuro en hover */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #3d566e; /* Color de fondo de la fila al pasar el ratón */
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table thead th {
+    background-color: #1b2a38; /* Color de fondo del encabezado de la tabla */
+    color: #ecf0f1; /* Color de texto del encabezado de la tabla */
+    border-bottom: 2px solid #34495e; /* Líneas horizontales para el encabezado */
+    border-right: none; /* Sin líneas verticales en el encabezado */
+    border-left: none; /* Sin líneas verticales en el encabezado */
+}
+
+.table tbody td {
+    color: #ecf0f1; /* Color de texto del cuerpo de la tabla */
+    border-top: 1px solid #34495e; /* Líneas horizontales para el cuerpo */
+    border-right: none; /* Sin líneas verticales en el cuerpo */
+    border-left: none; /* Sin líneas verticales en el cuerpo */
+}
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/inicio}">Volver al inicio</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>Buscar top 3 afiliados por evento</h2>
+        <form th:action="@{/listaTopAfiliadosEventos}" method="get">
+            <div class="form-group">
+                <label for="pez">Nombre del Evento:</label>
+                <select id="evento" name="evento" class="form-control" required>
+                    <option value="">Seleccione un Evento</option>
+                    <option th:each="evento : ${eventosN}" th:value="${evento}" th:text="${evento}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+        <table class="table table-hover table-bordered mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Ficha</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Posición</th>
+                    <th>Trofeo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="top : ${topAfiliados}">
+                    <td th:text="${top.ficha}">Ficha</td>
+                    <td th:text="${top.nombre}">Nombre</td>
+                    <td th:text="${top.apellidos}">Apellidos</td>
+                    <td th:text="${top.posicion}">Posicion</td>
+                    <td th:text="${top.trofeo}">Trofeo</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

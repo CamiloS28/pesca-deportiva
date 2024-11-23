@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Buscar Participaciones</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href=#>Control de afiliados</a>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/index}">Control
+						Afiliados </a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/index/crear}">Crear afiliado</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/peces}">Peces</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/licencias}">Licencias</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/cauces}">Cauces</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarParticipaciones}">Participaciones</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarPermisos}">Permisos</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarVistaParticipaciones}">VistaMinPosicionParticipaciones</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container mt-5">
+		<h2>Buscar Participaciones por ficha</h2>
+		<form th:action="@{/listaParticipaciones}" method="get">
+			<div class="form-group">
+				<label for="apellido">Ficha del Afiliado:</label> <input type="text"
+					id="ficha" name="ficha" class="form-control" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Buscar</button>
+		</form>
+
+		<!-- Sección para mostrar los resultados -->
+		<div class="mt-5">
+			<h3>Resultados:</h3>
+			<table class="table table-bordered"
+				th:if="${not #lists.isEmpty(participaciones)}">
+				<thead class="thead-dark">
+					<tr>
+						<th>ficha</th>
+						<th>Evento</th>
+						<th>Posicion</th>
+						<th>Trofeo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="participacion : ${participaciones}">
+						<td th:text="${participacion.afiliado.id}">Ficha</td>
+						<td th:text="${participacion.eventoDetalle.evento}">Evento</td>
+						<td th:text="${participacion.posicion}">Posicion</td>
+						<td th:text="${participacion.trofeo}">Trofeo</td>
+					</tr>
+				</tbody>
+			</table>
+			<div th:if="${#lists.isEmpty(participacion)}">
+				<p>No se encontraron resultados.</p>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

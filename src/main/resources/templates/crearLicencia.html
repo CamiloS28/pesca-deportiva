@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Crear Licencia</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href=#>Control de afiliados</a>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/index}">Control
+						Afiliados </a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/index/crear}">Crear afiliado</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/peces}">Peces</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/licencias}">Licencias</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/cauces}">Cauces</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarParticipaciones}">Participaciones</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarPermisos}">Permisos</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarVistaParticipaciones}">VistaMinPosicionParticipaciones</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h2 class="text-center">Crear Nueva Licencia</h2>
+				<div class="card-body">
+					<form th:action="@{/licencias}" th:object="${licencias}"
+						method="POST">
+						<div class="form-group">
+							<label for="licencia" class="form-label">Licencia</label> <input
+								type="text" id="licencia" th:field="*{nLicencia}"
+								class="form-control" placeholder="Licencia" />
+						</div>
+
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

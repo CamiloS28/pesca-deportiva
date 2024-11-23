@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Editar Lugar</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+body {
+    background-color: #2c3e50; /* Fondo de color azul oscuro */
+    color: #ecf0f1; /* Color de texto claro */
+}
+
+.navbar {
+    margin-bottom: 30px;
+    background-color: #1b2a38; /* Color de fondo del navbar */
+    border-bottom: 3px solid #27ae60; /* Línea inferior verde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para hacerla más llamativa */
+}
+
+.navbar-brand, .nav-link {
+    color: #ecf0f1 !important;
+    font-size: 1.2em; /* Aumenta el tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #27ae60 !important; /* Color verde en hover */
+}
+
+.navbar-brand {
+    font-size: 1.5em; /* Aumenta el tamaño del texto del brand */
+    color: #27ae60 !important; /* Color verde para el brand */
+}
+
+.navbar-nav {
+    margin: 0; /* Alineando el contenido de la navbar a la izquierda */
+}
+
+.container {
+    margin-top: 50px;
+}
+
+h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #27ae60; /* Color de texto verde */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    color: #ecf0f1; /* Color de texto claro */
+}
+
+.form-control {
+    background-color: #34495e; /* Fondo de la caja de texto */
+    color: #ecf0f1; /* Color de texto claro */
+    border: none;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    background-color: #3d566e; /* Fondo de la caja de texto al enfocar */
+    color: #ecf0f1; /* Color de texto claro */
+}
+
+.btn-primary {
+    background-color: #2980b9; /* Color azul claro para el botón */
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.btn-primary:hover {
+    background-color: #1f618d; /* Color azul más oscuro en hover */
+}
+
+.btn-secondary {
+    background-color: #FF2D00; /* Color rojo para el botón */
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+    margin-top: 10px; /* Espacio entre los botones */
+}
+
+.btn-secondary:hover {
+    background-color: #CD4426; /* Color rojo más oscuro en hover */
+}
+
+.card {
+    background-color: #34495e; /* Fondo de la tarjeta azul grisáceo */
+    color: #ecf0f1; /* Color de texto claro */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.box-footer {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.form-control {
+    background-color: #3d566e; /* Fondo verde para los inputs */
+    color: #ecf0f1;
+}
+
+.form-control:focus {
+    background-color: #4e6a82; /* Verde más oscuro al enfocarse */
+    color: #ecf0f1;
+}
+
+.btn-primary {
+    background-color: #27ae60; /* Verde para el botón */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #1e8449; /* Verde más oscuro en hover */
+}
+
+h2 {
+    color: #27ae60; /* Título de color verde */
+}
+</style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h2 class="text-center">Editar Lugar</h2>
+                <div class="card-body">
+                    <form th:action="@{/lugares/{nLugar}(nLugar=${lugares.lugar})}" th:object="${lugares}" method="POST">
+                        <div class="form-group">
+                            <label for="lugar" class="form-label">Nombre del Lugar</label>
+                            <input type="text" id="lugar" th:field="*{lugar}" class="form-control" placeholder="Nombre del lugar" required readonly />
+                        </div>
+                        <div class="form-group">
+                            <label for="comunidad" class="form-label">Comunidad</label>
+                            <input type="text" id="comunidad" th:field="*{comunidad}" class="form-control" placeholder="Comunidad" />
+                        </div>
+                        <div class="form-group">
+                            <label for="odLugar" class="form-label">OD Lugar</label>
+                            <input type="text" id="odLugar" th:field="*{odLugar}" class="form-control" placeholder="OD Lugar" />
+                        </div>
+                        <div class="form-group">
+                            <label for="cauce" class="form-label">Cauce</label>
+                             <input type="text" id="cauce" th:field="*{cauce}" class="form-control" placeholder="Cauce" readonly/>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a th:href="@{/lugares}" class="btn btn-secondary">Regresar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

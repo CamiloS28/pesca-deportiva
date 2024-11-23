@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Buscar Permisos</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href=#>Control de afiliados</a>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/index}">Control
+						Afiliados </a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/index/crear}">Crear afiliado</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/peces}">Peces</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/licencias}">Licencias</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/cauces}">Cauces</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarParticipaciones}">Participaciones</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarPermisos}">Permisos</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/buscarVistaParticipaciones}">VistaMinPosicionParticipaciones</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container mt-5">
+		<h2>Buscar Permisos por Apellido</h2>
+		<form th:action="@{/listaPermisos}" method="get">
+			<div class="form-group">
+				<label for="apellido">Apellido del Afiliado:</label> <input
+					type="text" id="apellido" name="apellido" class="form-control"
+					required>
+			</div>
+			<button type="submit" class="btn btn-primary">Buscar</button>
+		</form>
+
+		<!-- Sección para mostrar los resultados -->
+		<div class="mt-5">
+			<h3>Resultados:</h3>
+			<table class="table table-bordered" th:if="${permisos != null}">
+				<thead class="thead-dark">
+					<tr>
+						<th>Ficha</th>
+						<th>Apellido del Afiliado</th>
+						<th>Licencia</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="permiso : ${permisos}">
+						<td th:text="${permiso.ficha}">Ficha</td>
+						<td th:text="${permiso.afiliado.apellidosAfiliado}">Apellido</td>
+						<td th:text="${permiso.licencia.nLicencia}">Licencia</td>
+					</tr>
+				</tbody>
+			</table>
+			<div th:if="${#lists.isEmpty(permisos)}">
+				<p>No se encontraron resultados.</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
